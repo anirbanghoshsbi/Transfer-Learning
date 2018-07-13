@@ -10,21 +10,17 @@ The process by which we do this is called _transfer learning_ here we treat netw
 
 VGG Network :-
 
-Input(224 * 224 * 3) --> (Conv * 2)+Pool --> (Conv * 2) + Pool --> (Conv * 3) +Pool --> (Conv * 3) +Pool --> (Conv * 3) +Pool --> 
-                         [112 * 112 * 128#]     [56 * 56 * 128]        [28 * 28 * 128]       [ 14 * 14 * 128]         [7 * 7 * 512@]
-FC * 3 + Softmax ===>Output labels
-[1 * 1 * 1000 ]       _1000 classes_
+Input(224 * 224 * 3) --> (Conv * 2)+Pool [112 * 112 * 128#]--> (Conv * 2) + Pool [56 * 56 * 128]--> (Conv * 3) +Pool [28 * 28 * 128]--> (Conv * 3) +Pool[ 14 * 14 * 128] --> (Conv * 3) +Pool [7 * 7 * 512@]-->FC * 3 + Softmax [1 * 1 * 1000 ] ===>Output labels _1000 classes_
+       
 #number of filters used 128.
 @number of filters used 512.
 
 Transfer learning :-
 In this specific problem we remove the FC layer ,so our output from the network is a feature vector of size 512 * 7 * 7 = 25,088.
 
-Input(224 * 224 * 3) --> (Conv * 2)+Pool --> (Conv * 2) + Pool --> (Conv * 3) +Pool --> (Conv * 3) +Pool --> (Conv * 3) +Pool --> 
-                         [112 * 112 * 128#]     [56 * 56 * 128]        [28 * 28 * 128]       [ 14 * 14 * 128]         [7 * 7 * 512@]
-{FC * 3 + Softmax ===>Output labels}
+Input(224 * 224 * 3) --> (Conv * 2)+Pool [112 * 112 * 128#]--> (Conv * 2) + Pool [56 * 56 * 128]--> (Conv * 3) +Pool [28 * 28 * 128]--> (Conv * 3) +Pool[ 14 * 14 * 128] --> (Conv * 3) +Pool [7 * 7 * 512@]-->  _{FC * 3 + Softmax ===>Output labels}_
 
-Every thing within {} gets removed , we are left with a feature vector of 25,088. Later we add a logistic regression module to classify images belonging to say Flower -17. _The important thing to note here is that CNN was not trained on this data._
+Every thing within _{}_ gets removed , we are left with a feature vector of 25,088. Later we add a logistic regression module to classify images belonging to say Flower -17. _The important thing to note here is that CNN was not trained on this data._
 
 # Extracting the Features 
 Step 1 :
@@ -47,5 +43,5 @@ Results : training a Logistic Regression Model on Flower -17 on a pre-trained we
 
 _Therefore the Network is able to perform transfer learning , encoding the discriminative features on a output activations that we can use to train our own custom image classifier._
 
-Advantage of Transfer learning :-
+# Advantage of Transfer learning :-
 if feature extraction with reasonable accuracy is obtained using transfer learning it can save lots of time , effort and compute power.
