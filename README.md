@@ -22,10 +22,10 @@ Input(224 * 224 * 3) --> (Conv * 2)+Pool [112 * 112 * 128#]--> (Conv * 2) + Pool
 
 Every thing within _{}_ gets removed , we are left with a feature vector of 25,088. Later we add a logistic regression module to classify images belonging to say Flower -17. _The important thing to note here is that CNN was not trained on this data._
 
-'''
-'keras code for cutting the network at specific point'
+```
+`keras code for cutting the network at specific point`
 model = VGG16(weights = 'imagenet', include_top=False)
-'''
+```
 
 # Extracting the Features 
 Step 1 :
