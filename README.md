@@ -22,6 +22,11 @@ Input(224 * 224 * 3) --> (Conv * 2)+Pool [112 * 112 * 128#]--> (Conv * 2) + Pool
 
 Every thing within _{}_ gets removed , we are left with a feature vector of 25,088. Later we add a logistic regression module to classify images belonging to say Flower -17. _The important thing to note here is that CNN was not trained on this data._
 
+'''
+'keras code for cutting the network at specific point'
+model = VGG16(weights = 'imagenet', include_top=False)
+'''
+
 # Extracting the Features 
 Step 1 :
 Supposing we are going to use the Flower 17 dataset . So we forward propagate the flowers dataset ( just as we would have done in case of drawing inference from the images.) through the vgg network, The output that we obtain from the network is a dataset of size 1360 images having 25088 features each.We store the data in the form of HDF5 file having three headers : features , label_names , labels
