@@ -28,7 +28,7 @@ Every thing within _{}_ gets removed , we are left with a feature vector of 25,0
 `model = VGG16(weights = 'imagenet', include_top=False)`
 
 
-# Extracting the Features 
+## Extracting the Features 
 Step 1 :
 Supposing we are going to use the Flower 17 dataset . So we forward propagate the flowers dataset ( just as we would have done in case of drawing inference from the images.) through the vgg network, The output that we obtain from the network is a dataset of size 1360 images having 25088 features each.We store the data in the form of HDF5 file having three headers : features , label_names , labels
 
@@ -49,5 +49,5 @@ Results : training a Logistic Regression Model on Flower -17 on a pre-trained we
 
 _Therefore the Network is able to perform transfer learning , encoding the discriminative features on a output activations that we can use to train our own custom image classifier._
 
-# Advantage of Transfer learning :-
+## Advantage of Transfer learning :-
 if feature extraction with reasonable accuracy is obtained using transfer learning it can save lots of time , effort and compute power.
